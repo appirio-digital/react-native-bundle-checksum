@@ -31,7 +31,7 @@ public class RNBundleChecksumModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void getChecksum(Promise promise){
-    BufferedReader br stream = null;
+    BufferedReader br = null;
     String bundle = null;
     try {
       AssetManager assetManager = getReactApplicationContext().getAssets();
