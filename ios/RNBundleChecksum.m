@@ -17,6 +17,10 @@ RCT_EXPORT_METHOD(getChecksum:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromi
     NSString *path = [[NSBundle mainBundle] pathForResource:@"main" ofType:@"jsbundle"];
     NSString *data = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
 
+    if (data == nil) {
+        reject(@"404", @"Unable to find bundle data. Ignore if running locally.", nil);
+        return;
+    }
     const char* str = [data UTF8String];
     unsigned char result[CC_SHA256_DIGEST_LENGTH];
     CC_SHA256(str, strlen(str), result);
