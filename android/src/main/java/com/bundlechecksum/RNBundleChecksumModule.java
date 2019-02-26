@@ -60,6 +60,7 @@ public class RNBundleChecksumModule extends ReactContextBaseJavaModule {
     } catch (Exception ex) {
       ex.printStackTrace();
       promise.reject("com.bundlechecksum", ex);
+      return;
     }
 
     MessageDigest md = null;
@@ -74,16 +75,19 @@ public class RNBundleChecksumModule extends ReactContextBaseJavaModule {
         }
 
         promise.resolve(sb.toString());
-
+        return;
     } catch (NoSuchAlgorithmException e) {
         e.printStackTrace();
         promise.reject("com.bundlechecksum", e.getMessage());
+        return;
     } catch (UnsupportedEncodingException e) {
         e.printStackTrace();
         promise.reject("com.bundlechecksum", e.getMessage());
+        return;
     } catch (Exception e) {
         e.printStackTrace();
         promise.reject("com.bundlechecksum", e.getMessage());
+        return;
     }
   }
 }
