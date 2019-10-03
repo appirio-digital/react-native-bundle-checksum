@@ -59,7 +59,7 @@ public class RNBundleChecksumModule extends ReactContextBaseJavaModule {
       }
     } catch (Exception ex) {
       ex.printStackTrace();
-      promise.reject("com.bundlechecksum", ex);
+      promise.reject("com.bundlechecksum", new Exception("Failed to open bundle file. You may be running in development mode."));
       return;
     }
 
